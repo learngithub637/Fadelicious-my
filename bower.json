@@ -1,0 +1,14 @@
+{
+  "name": "template",
+  "description": "template for later work",
+  "main": "index.js",
+  "authors": [
+    "Me"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "normalize-css": "normalize.css#^5.0.0"
+  }
+}
