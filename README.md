@@ -1,1 +1,1 @@
-My default template
+npm i bower i gulp work
