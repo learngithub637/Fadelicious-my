@@ -1,7 +1,10 @@
 var gulp    = require ('gulp'),
     connect = require('gulp-connect'),
-    opn     = require('opn');
-    sass 	= require('gulp-sass');
+    opn     = require('opn'),
+    sass 	= require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    cleanCSS = require('gulp-clean-css'),
+    concatCss = require('gulp-concat-css');
 
 //сервер
 gulp.task('connect', function() {
@@ -54,3 +57,35 @@ gulp.task('watch', function () {
 // gulp.task('default', ['connect', 'watch']);
 
 gulp.task('work', ['connect', 'watch']);
+
+// DIST
+// gulp.task('prefix', () =>
+//     gulp.src('./app/css/style.css')
+//         .pipe(autoprefixer({
+//             browsers: ['last 2 versions'],
+//             cascade: false
+//         }))
+//         .pipe(gulp.dest('./app/css/style.css'))
+// );
+
+// gulp.task('minify-css', function() {
+//   return gulp.src('./app/css/*.css')
+//     .pipe(cleanCSS({compatibility: 'ie8'}))
+//     .pipe(gulp.dest('./dist/css'));
+// });
+
+// gulp.task('concat-css', function () {
+//   return gulp.src('./app/css/*.css')
+//     .pipe(concatCss("./temp/style.css"))
+//     .pipe(gulp.dest('./dist/css'));
+// });
+
+gulp.task('dist-css', function() {
+  return gulp.src('./app/css/style.css')
+  .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+  }))
+  .pipe(cleanCSS({compatibility: 'ie8'}))
+  .pipe(gulp.dest('./dist/css'));
+});
